@@ -7,6 +7,6 @@ build-image:
 
 .PHONY: publish
 publish: build-image
-	#test -z "$$(git status --porcelain)" || ( echo You have uncommited changes; exit 1; )
+	test -z "$$(git status --porcelain)" || ( echo You have uncommited changes; exit 1; )
 	docker tag ${IMAGE} ${IMAGE}:${VERSION}
 	docker push ${IMAGE}:${VERSION}
